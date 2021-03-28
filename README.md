@@ -9,8 +9,8 @@ Bell coding assignment
 
 
 # Search Ticket Page
-- [ ] Allow user to filter list of tickets by: project name, department name, date & time, employee name, keywords found in description of ticket
-- [ ] If no filter is chosen than display total list of created tickets
+- [x] Allow user to filter list of tickets by: project name, department name, date & time, employee name, keywords found in description of ticket
+- [x] If no filter is chosen than display total list of created tickets
 
 # Chart Page
 - [ ] Provide clean display of charts displaying ticket info (number and content of charts are yet to be determined)
