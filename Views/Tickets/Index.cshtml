@@ -3,12 +3,86 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .filterTable {
+        width: 100%;
+        border: 1px solid black;
+    }
+    .filterCell {
+        border: 1px solid black;
+        padding: 5px;
+        width: 20%;
+    }
+</style>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="DepSelect">Create New</a>
-</p>
+
+<div>
+    <h3>Filters applied: </h3>
+
+    <table class="filterTable">
+        <tr>
+            <td class="filterCell"><b>Project Name</b></td>
+            <td class="filterCell"><b>Department Name</b></td>
+            <td class="filterCell"><b>Employee Name</b></td>
+            <td class="filterCell"><b>Description Keywords</b></td>
+            <td class="filterCell"><b>Date & Time</b></td>
+        </tr>
+        <tr>
+            @{
+                if (!(ViewBag.ProjName.Equals("")))
+                {
+                    <td class="filterCell">@ViewBag.ProjName</td>
+                }
+                else
+                {
+                    <td class="filterCell" style="background-color:lightgrey">No Filter</td>
+                }
+
+                if (!(ViewBag.DepName.Equals("")))
+                {
+                    <td class="filterCell">@ViewBag.DepName</td>
+                }
+                else
+                {
+                    <td class="filterCell" style="background-color:lightgrey">No Filter</td>
+                }
+
+                if (!(ViewBag.EmpName.Equals("")))
+                {
+                    <td class="filterCell">@ViewBag.EmpName</td>
+                }
+                else
+                {
+                    <td class="filterCell" style="background-color:lightgrey">No Filter</td>
+                }
+
+                if (!(ViewBag.SearchPhrase.Equals("")))
+                {
+                    <td class="filterCell">@ViewBag.SearchPhrase</td>
+                }
+                else
+                {
+                    <td class="filterCell" style="background-color:lightgrey">No Filter</td>
+                }
+
+                if (!(ViewBag.DateTime.Equals("")))
+                {
+                    <td class="filterCell">@ViewBag.DateTime</td>
+                }
+                else
+                {
+                    <td class="filterCell" style="background-color:lightgrey">No Filter</td>
+                }
+            }
+
+        </tr>
+    </table>
+
+    <h1 style="padding-top: 25px;">Ticket List</h1>
+
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,3 +125,9 @@
 }
     </tbody>
 </table>
+
+<form asp-action="ShowSearchForm">
+    <div class="form-group">
+        <input type="submit" value="Back" class="btn btn-primary" />
+    </div>
+</form>

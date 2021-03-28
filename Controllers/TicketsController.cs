@@ -23,6 +23,7 @@ namespace RequestSupportApp.Controllers
         // GET: Tickets
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Ticket.ToListAsync());
         }
 
@@ -37,7 +38,7 @@ namespace RequestSupportApp.Controllers
             List<Ticket> ticketList = await retrieveTicketList;
             ViewBag.ticketList = ticketList;
 
-            return View();
+            return View(await _context.Ticket.ToListAsync());
         }
 
         // POST: Tickets/ShowSearchResults
@@ -64,6 +65,11 @@ namespace RequestSupportApp.Controllers
             {
                 DateTime = "";
             }
+            ViewBag.ProjName = ProjName;
+            ViewBag.DepName = DepName;
+            ViewBag.EmpName = EmpName;
+            ViewBag.SearchPhrase = SearchPhrase;
+            ViewBag.DateTime = DateTime;
 
             return View("Index", await _context.Ticket.Where(j => (j.ProjectName.Contains(ProjName) && j.DepartmentName.Contains(DepName) && j.EmployeeName.Contains(EmpName) && j.ProjectDesc.Contains(SearchPhrase) && j.TicketDate.Contains(DateTime))).ToListAsync());
         }
@@ -133,7 +139,7 @@ namespace RequestSupportApp.Controllers
             {
                 _context.Add(ticket);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ShowSearchForm));
             }
             return View(ticket);
         }
@@ -184,7 +190,7 @@ namespace RequestSupportApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ShowSearchForm));
             }
             return View(ticket);
         }
@@ -215,7 +221,7 @@ namespace RequestSupportApp.Controllers
             var ticket = await _context.Ticket.FindAsync(id);
             _context.Ticket.Remove(ticket);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ShowSearchForm));
         }
 
         private bool TicketExists(int id)

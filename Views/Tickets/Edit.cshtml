@@ -12,42 +12,47 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="ProjectName" class="control-label"></label>
-                <input asp-for="ProjectName" class="form-control" />
+                <input asp-for="ProjectName" class="form-control" id="ProjectName" />
                 <span asp-validation-for="ProjectName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="DepartmentName" class="control-label"></label>
-                <input asp-for="DepartmentName" class="form-control" />
+                <input style="background-color: #f2f2f2;" asp-for="DepartmentName" class="form-control" readonly />
                 <span asp-validation-for="DepartmentName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="EmployeeName" class="control-label"></label>
-                <input asp-for="EmployeeName" class="form-control" />
-                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                <label for="EmployeeName" class="control-label">Requested By:</label>
+                <input style="background-color: #f2f2f2;" asp-for="EmployeeName" class="form-control" readonly />
             </div>
+
             <div class="form-group">
                 <label asp-for="ProjectDesc" class="control-label"></label>
-                <input asp-for="ProjectDesc" class="form-control" />
+                <textarea rows="5" cols="30" asp-for="ProjectDesc" class="form-control"></textarea>
                 <span asp-validation-for="ProjectDesc" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="TicketDate" class="control-label"></label>
-                <input asp-for="TicketDate" class="form-control" />
+                <input style="background-color: #f2f2f2;" asp-for="TicketDate" class="form-control" readonly />
                 <span asp-validation-for="TicketDate" class="text-danger"></span>
             </div>
+
+
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<a asp-action="ShowSearchForm" asp-route-id="@Model.Id">Back</a>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

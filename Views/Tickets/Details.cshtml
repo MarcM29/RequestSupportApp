@@ -4,7 +4,13 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    dt,dd {
+        padding: 20px;
+    }
+</style>
+
+<h1>Ticket Details</h1>
 
 <div>
     <h4>Ticket</h4>
@@ -42,7 +48,8 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<form asp-action="ShowSearchForm">
+    <div class="form-group">
+        <input type="submit" value="Back" class="btn btn-primary" />
+    </div>
+</form>
