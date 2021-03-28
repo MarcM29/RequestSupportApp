@@ -56,8 +56,8 @@ namespace RequestSupportApp.Controllers
             return View(ticket);
         }
 
-        // GET: Tickets/Create
-        public async Task<IActionResult> Create()
+        // GET: Tickets/DepSelect
+        public async Task<IActionResult> DepSelect()
         {
             var employeez = _context.Employee.ToListAsync();
             List<Employee> employees = await employeez;
@@ -65,6 +65,32 @@ namespace RequestSupportApp.Controllers
             ViewBag.employeeList = employees;
             return View();
         }
+
+        // POST: Tickets/DepSelect AKA CREATE
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>  DepSelect(String DepartmentName)
+        {
+            var employeez = _context.Employee.ToListAsync();
+            List<Employee> employees = await employeez;
+
+            ViewBag.employeeList = employees;
+            ViewBag.dep = DepartmentName;
+            return View("Create");
+        }
+
+        // GET: Tickets/Create
+        /*public async Task<IActionResult> Create(String DepartmentName)
+        {
+            var employeez = _context.Employee.ToListAsync();
+            List<Employee> employees = await employeez;
+
+            ViewBag.employeeList = employees;
+            ViewBag.dep = DepartmentName;
+            return View();
+        }*/
 
         // POST: Tickets/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

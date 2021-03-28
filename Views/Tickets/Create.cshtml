@@ -8,107 +8,70 @@
     DateTime thisDay = DateTime.Now;
 }
 
-<h1>Create a</h1>
+<h1>Create a Ticket</h1>
+<h3>- @ViewBag.dep -</h3>
 
-<h4>Ticket</h4>
-
-@foreach (var user in ViewBag.employeeList)
-{
-    <p>@user.EmployeeName - @user.EmployeeDepartment</p>
-}
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProjectName" class="control-label"></label>
-                <input asp-for="ProjectName" class="form-control" />
-                <span asp-validation-for="ProjectName" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="DepartmentName" class="control-label"></label>
-                <select asp-for="DepartmentName" class="form-control">
-                    <option value="Division of Telecommunications Extranet Development">
-                        Division of Telecommunications Extranet Development
-                    </option>
-                    <option value="Extranet Multimedia Connectivity and Security Division">
-                        Extranet Multimedia Connectivity and Security Division
-                    </option>
-                    <option value="Branch of Extranet Implementation">
-                        Branch of Extranet Implementation
-                    </option>
-                    <option value="Branch of Intranet Computer Maintenance and E-Commerce PC Programming">
-                        Branch of Intranet Computer Maintenance and E-Commerce PC Programming
-                    </option>
-                    <option value="Wireless Extranet Backup Team">
-                        Wireless Extranet Backup Team
-                    </option>
-                    <option value="Database Programming Branch">
-                        Database Programming Branch
-                    </option>
-                    <option value="Hardware Backup Department">
-                        Hardware Backup Department
-                    </option>
-                    <option value="Multimedia Troubleshooting and Maintenance Team">
-                        Multimedia Troubleshooting and Maintenance Team
-                    </option>
-                    <option value="Office of Statistical Data Connectivity">
-                        Office of Statistical Data Connectivity
-                    </option>
-                    <option value="Division of Application Security">
-                        Division of Application Security
-                    </option>
-                    <option value="Network Maintenance and Multimedia Implementation Committee">
-                        Network Maintenance and Multimedia Implementation Committee
-                    </option>
-                    <option value="Mainframe PC Development and Practical Source Code Acquisition Team">
-                        Mainframe PC Development and Practical Source Code Acquisition Team
-                    </option>
-                    <option value="PC Maintenance Department">
-                        PC Maintenance Department
-                    </option>
-                    <option value="Bureau of Business-Oriented PC Backup and Wireless Telecommunications Control">
-                        Bureau of Business-Oriented PC Backup and Wireless Telecommunications Control
-                    </option>
-                    <option value="Software Technology and Networking Department">
-                        Software Technology and Networking Department
-                    </option>
-                </select>
-                <span asp-validation-for="DepartmentName" class="text-danger"></span>
-            </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ProjectName" class="control-label"></label>
+                    <input asp-for="ProjectName" class="form-control" id="ProjectName" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EmployeeName" class="control-label"></label>
-                <input asp-for="EmployeeName" class="form-control" />
-                <span asp-validation-for="EmployeeName" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentName" class="control-label"></label>
+                    <input style="background-color: lightgrey;" asp-for="DepartmentName" value="@ViewBag.dep" class="form-control" readonly />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="ProjectDesc" class="control-label"></label>
-                <textarea rows="5" cols="30" asp-for="ProjectDesc" class="form-control"></textarea>
-                <span asp-validation-for="ProjectDesc" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label for="EmployeeName" class="control-label">Requested By:</label>
+                    <select name="EmployeeName" class="form-control" id="EmployeeName">
+                        @foreach (var user in ViewBag.employeeList)
+                        {
+                            if (@user.EmployeeDepartment.Equals(ViewBag.dep))
+                            {
+                            <option value="@user.EmployeeName">@user.EmployeeName</option>
+                            }
+                        }
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="TicketDate" class="control-label"></label>
-                <input style="background-color: lightgrey;" asp-for="TicketDate" value="@thisDay.ToString("g")" class="form-control" readonly />
-                <span asp-validation-for="TicketDate" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="ProjectDesc" class="control-label"></label>
+                    <textarea rows="5" cols="30" asp-for="ProjectDesc" class="form-control"></textarea>
+                    <span asp-validation-for="ProjectDesc" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="TicketDate" class="control-label"></label>
+                    <input style="background-color: lightgrey;" asp-for="TicketDate" value="@thisDay.ToString("g")" class="form-control" readonly />
+                    <span asp-validation-for="TicketDate" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="DepSelect">Change Department</a>
+    </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script type="text/javascript">
+
+</script>
 }
