@@ -26,7 +26,7 @@
 
                 <div class="form-group">
                     <label asp-for="DepartmentName" class="control-label"></label>
-                    <input style="background-color: lightgrey;" asp-for="DepartmentName" value="@ViewBag.dep" class="form-control" readonly />
+                    <input style="background-color: #f2f2f2;" asp-for="DepartmentName" value="@ViewBag.dep" class="form-control" readonly />
                     <span asp-validation-for="DepartmentName" class="text-danger"></span>
                 </div>
 
@@ -51,7 +51,7 @@
 
                 <div class="form-group">
                     <label asp-for="TicketDate" class="control-label"></label>
-                    <input style="background-color: lightgrey;" asp-for="TicketDate" value="@thisDay.ToString("g")" class="form-control" readonly />
+                    <input style="background-color: #f2f2f2;" asp-for="TicketDate" value="@thisDay.ToString("g")" class="form-control" readonly />
                     <span asp-validation-for="TicketDate" class="text-danger"></span>
                 </div>
 

@@ -12,51 +12,20 @@
             <div class="form-group">
                 <label for="DepartmentName" class="control-label"></label>
                 <select name="DepartmentName" class="form-control">
-                    <option value="Division of Telecommunications Extranet Development">
-                        Division of Telecommunications Extranet Development
-                    </option>
-                    <option value="Extranet Multimedia Connectivity and Security Division">
-                        Extranet Multimedia Connectivity and Security Division
-                    </option>
-                    <option value="Branch of Extranet Implementation">
-                        Branch of Extranet Implementation
-                    </option>
-                    <option value="Branch of Intranet Computer Maintenance and E-Commerce PC Programming">
-                        Branch of Intranet Computer Maintenance and E-Commerce PC Programming
-                    </option>
-                    <option value="Wireless Extranet Backup Team">
-                        Wireless Extranet Backup Team
-                    </option>
-                    <option value="Database Programming Branch">
-                        Database Programming Branch
-                    </option>
-                    <option value="Hardware Backup Department">
-                        Hardware Backup Department
-                    </option>
-                    <option value="Multimedia Troubleshooting and Maintenance Team">
-                        Multimedia Troubleshooting and Maintenance Team
-                    </option>
-                    <option value="Office of Statistical Data Connectivity">
-                        Office of Statistical Data Connectivity
-                    </option>
-                    <option value="Division of Application Security">
-                        Division of Application Security
-                    </option>
-                    <option value="Network Maintenance and Multimedia Implementation Committee">
-                        Network Maintenance and Multimedia Implementation Committee
-                    </option>
-                    <option value="Mainframe PC Development and Practical Source Code Acquisition Team">
-                        Mainframe PC Development and Practical Source Code Acquisition Team
-                    </option>
-                    <option value="PC Maintenance Department">
-                        PC Maintenance Department
-                    </option>
-                    <option value="Bureau of Business-Oriented PC Backup and Wireless Telecommunications Control">
-                        Bureau of Business-Oriented PC Backup and Wireless Telecommunications Control
-                    </option>
-                    <option value="Software Technology and Networking Department">
-                        Software Technology and Networking Department
-                    </option>
+                    @{
+                        List<string> depList = new List<string>();
+                        foreach (var user in ViewBag.employeeList)
+                        {
+                            if (!depList.Contains(user.EmployeeDepartment))
+                            {
+                                depList.Add(user.EmployeeDepartment);
+                                <option value="@user.EmployeeDepartment">
+                                    @user.EmployeeDepartment
+                                </option>
+                            }
+                        }
+
+                    }
                 </select>
             </div>
 
