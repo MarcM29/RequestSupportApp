@@ -4,8 +4,8 @@ Bell coding assignment
 # Requirements for MVP
 
 # Submit Ticket Page
-- [ ] Provide form for user to submit ticket details (project name, department name, employee name and description) + automatically store date and time
-- [ ] Ensure all fields must be filled out before ticket can be created
+- [x] Provide form for user to submit ticket details (project name, department name, *relevant* employee name and description) + automatically store date and time
+- [x] Ensure all fields must be filled out before ticket can be created
 
 
 # Search Ticket Page
