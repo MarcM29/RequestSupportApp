@@ -1,14 +1,106 @@
 ﻿
-
-<h4>Search</h4>
+<h4>Filter Ticket List</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="ShowSearchResults">
+
             <div class="form-group">
-                <label for="SearchPhrase" class="control-label"></label>
+                <label for="ProjName" class="control-label">Project Name:</label>
+                <select name="ProjName" class="form-control">
+                    @{
+                        <option value="">
+                            Any
+                        </option>
+                        List<string> pNameList = new List<string>();
+                        foreach (var ticket in ViewBag.ticketList)
+                        {
+                            if (!pNameList.Contains(ticket.ProjectName))
+                            {
+                                pNameList.Add(ticket.ProjectName);
+                                <option value="@ticket.ProjectName">
+                                    @ticket.ProjectName
+                                </option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="DepName" class="control-label">Department:</label>
+                <select name="DepName" class="form-control">
+                    @{
+                        <option value="">
+                            Any
+                        </option>
+                        List<string> depList = new List<string>();
+                        foreach (var user in ViewBag.employeeList)
+                        {
+                            if (!depList.Contains(user.EmployeeDepartment))
+                            {
+                                depList.Add(user.EmployeeDepartment);
+                                <option value="@user.EmployeeDepartment">
+                                    @user.EmployeeDepartment
+                                </option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="EmpName" class="control-label">Employee Name</label>
+                <select name="EmpName" class="form-control">
+                    @{
+                        <option value="">
+                            Any
+                        </option>
+                        List<string> eNameList = new List<string>();
+                        foreach (var emp in ViewBag.employeeList)
+                        {
+                            if (!eNameList.Contains(emp.EmployeeName))
+                            {
+                                eNameList.Add(emp.EmployeeName);
+                                <option value="@emp.EmployeeName">
+                                    @emp.EmployeeName
+                                </option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="SearchPhrase" class="control-label">Description Keywords:</label>
                 <input name="SearchPhrase" class="form-control" />
             </div>
+
+            <div class="form-group">
+                <label for="DateTime" class="control-label">Date and Time:</label>
+                <select name="DateTime" class="form-control">
+                    @{
+                        <option value="">
+                            Any
+                        </option>
+                        List<string> dList = new List<string>();
+                        foreach (var ticket in ViewBag.ticketList)
+                        {
+                            if (!dList.Contains(ticket.TicketDate))
+                            {
+                                dList.Add(ticket.TicketDate);
+                                <option value="@ticket.TicketDate">
+                                    @ticket.TicketDate
+                                </option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+
+
+
             <div class="form-group">
                 <input type="submit" value="Search" class="btn btn-primary" />
             </div>

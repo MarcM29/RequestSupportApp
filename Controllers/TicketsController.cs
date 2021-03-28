@@ -29,13 +29,43 @@ namespace RequestSupportApp.Controllers
         // GET: Tickets/ShowSearchForm
         public async Task<IActionResult> ShowSearchForm()
         {
+            var employeez = _context.Employee.ToListAsync();
+            List<Employee> employees = await employeez;
+            ViewBag.employeeList = employees;
+
+            var retrieveTicketList = _context.Ticket.ToListAsync();
+            List<Ticket> ticketList = await retrieveTicketList;
+            ViewBag.ticketList = ticketList;
+
             return View();
         }
 
         // POST: Tickets/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        public async Task<IActionResult> ShowSearchResults(String ProjName, String DepName, String EmpName, String SearchPhrase, String DateTime)
         {
-            return View("Index", await _context.Ticket.Where(j => j.ProjectName.Contains(SearchPhrase)).ToListAsync());
+            //Checks if no filter was chosen for each field
+            if (ProjName is null)
+            {
+                ProjName = "";
+            }
+            if (DepName is null)
+            {
+                DepName = "";
+            }
+            if (EmpName is null)
+            {
+                EmpName = "";
+            }
+            if (SearchPhrase is null)
+            {
+                SearchPhrase = "";
+            }
+            if (DateTime is null)
+            {
+                DateTime = "";
+            }
+
+            return View("Index", await _context.Ticket.Where(j => (j.ProjectName.Contains(ProjName) && j.DepartmentName.Contains(DepName) && j.EmployeeName.Contains(EmpName) && j.ProjectDesc.Contains(SearchPhrase) && j.TicketDate.Contains(DateTime))).ToListAsync());
         }
 
         // GET: Tickets/Details/5
