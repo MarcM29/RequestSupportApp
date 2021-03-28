@@ -8,9 +8,15 @@
     DateTime thisDay = DateTime.Now;
 }
 
-<h1>Create</h1>
+<h1>Create a</h1>
 
 <h4>Ticket</h4>
+
+@foreach (var user in ViewBag.employeeList)
+{
+    <p>@user.EmployeeName - @user.EmployeeDepartment</p>
+}
+
 <hr />
 <div class="row">
     <div class="col-md-4">

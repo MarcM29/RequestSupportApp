@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RequestSupportApp.Data;
 using RequestSupportApp.Models;
+using System.Threading;
 
 namespace RequestSupportApp.Controllers
 {
@@ -56,8 +57,12 @@ namespace RequestSupportApp.Controllers
         }
 
         // GET: Tickets/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var employeez = _context.Employee.ToListAsync();
+            List<Employee> employees = await employeez;
+
+            ViewBag.employeeList = employees;
             return View();
         }
 
