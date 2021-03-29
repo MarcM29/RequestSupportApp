@@ -2,7 +2,35 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
+
+<h1 style="text-align: center">Request Support App</h1>
+<h2 style="text-align: center">Bell Coding Project</h2>
+<h3 style="text-align: center">- Marc McCombe -</h3>
+
+<div class="charts" style="border: 1px solid black; padding: 20px; margin: 20px;">
+    <h4 style="padding-bottom:20px; padding-top:10px;"><u>Existing Projects & Associated Ticket Count</u></h4>
+    @{
+        var count = 0;
+        var total = 0;
+        var projList = (List<string>)ViewBag.uniqueProjList;
+        var valList = (List<int>)ViewBag.projCountList;
+        var percentList = new List<string>();
+        total = ViewBag.totalTickets;
+
+        @for (int i = 0; i < valList.Count; i++)
+        {
+            var temp = valList[i] * 100 / total;
+            percentList.Add(temp + "%");
+        }
+
+
+        @foreach (string projTitle in (List<string>)ViewBag.uniqueProjList)
+        {
+            <h5>@projTitle</h5>
+            <div class="charts__chart chart--lg chart--hover chart--blue" data-percent="@valList[count]" style="width: @percentList[count]"></div><!-- /.charts__chart -->
+            count++;
+            <br />
+        }
+    }
+</div><!-- /.charts -->

@@ -74,6 +74,8 @@ namespace RequestSupportApp.Controllers
             return View("Index", await _context.Ticket.Where(j => (j.ProjectName.Contains(ProjName) && j.DepartmentName.Contains(DepName) && j.EmployeeName.Contains(EmpName) && j.ProjectDesc.Contains(SearchPhrase) && j.TicketDate.Contains(DateTime))).ToListAsync());
         }
 
+       
+
         // GET: Tickets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
