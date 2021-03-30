@@ -1,0 +1,7 @@
+SET IDENTITY_INSERT [dbo].[Ticket] ON
+INSERT INTO [dbo].[Ticket] ([Id], [ProjectName], [DepartmentName], [EmployeeName], [ProjectDesc], [TicketDate]) VALUES (1, N'Project 1', N'Hardware Backup Department', N'Lana Montes', N'The first project in this app. Vital for testing purposes.', N'2021-03-28 2:35 PM')
+INSERT INTO [dbo].[Ticket] ([Id], [ProjectName], [DepartmentName], [EmployeeName], [ProjectDesc], [TicketDate]) VALUES (2, N'Project 2 Wireless', N'Wireless Extranet Backup Team', N'Janice Skipper', N'Explore the possibility of transitioning primary storage to cloud', N'2021-03-28 3:00 PM')
+INSERT INTO [dbo].[Ticket] ([Id], [ProjectName], [DepartmentName], [EmployeeName], [ProjectDesc], [TicketDate]) VALUES (3, N'Project 3 Extranet Security', N'Extranet Multimedia Connectivity and Security Division', N'Leola Thornburg', N'Improve security for customers by implementing new encryption scheme', N'2021-03-28 7:02 PM')
+INSERT INTO [dbo].[Ticket] ([Id], [ProjectName], [DepartmentName], [EmployeeName], [ProjectDesc], [TicketDate]) VALUES (4, N'Project 1', N'PC Maintenance Department', N'Olene Pyron', N'Trouble booting up office PC''s after update', N'2021-03-29 2:00 PM')
+INSERT INTO [dbo].[Ticket] ([Id], [ProjectName], [DepartmentName], [EmployeeName], [ProjectDesc], [TicketDate]) VALUES (5, N'Project 4 stats', N'Office of Statistical Data Connectivity', N'Keren Gillespi', N'Some statistical related problem with a very intricate description that clearly outlines the problem.', N'2021-03-29 5:26 PM')
+SET IDENTITY_INSERT [dbo].[Ticket] OFF
