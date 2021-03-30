@@ -8,8 +8,12 @@
 <h2 style="text-align: center">Bell Coding Project</h2>
 <h3 style="text-align: center">- Marc McCombe -</h3>
 
+<!--Following div deals with graph construction using the data passed via ViewBag-->
 <div class="charts" style="border: 1px solid black; padding: 20px; margin: 20px;">
     <h4 style="padding-bottom:20px; padding-top:10px;"><u>Existing Projects & Associated Ticket Count</u></h4>
+    <!--Following block of C# simply converts the number of tickets for each project in to a percentage of total tickets 
+        in order to build the chart correctly. percentList is used to determine width of each bar for each project where 
+        projList and valList are simply just lists of unique project names and their associated ticket count (respectively)-->
     @{
         var count = 0;
         var total = 0;

@@ -8,7 +8,10 @@ namespace RequestSupportApp.Models
 {
     public class Ticket
     {
+        //Primary key for Ticket
         public int Id { get; set; }
+
+        //Following Ticket attributes are required -> the user MUST enter a value for these variables before a Ticket may be created 
         [Display(Name = "Project Name:")]
         [Required(ErrorMessage = "Submitted tickets must have an associated project name")]
         public string ProjectName { get; set; }
@@ -27,6 +30,8 @@ namespace RequestSupportApp.Models
 
         [Display(Name = "Date and Time:")]
         public string TicketDate { get; set; }
+
+        //Constructor
         public Ticket()
         {
 

@@ -24,10 +24,13 @@ namespace RequestSupportApp.Controllers
 
         public async Task<IActionResult> Index()
         {
+            //Retrieves list of all Tickets
             var retrieveTicketList = _context.Ticket.ToListAsync();
             List<Ticket> ticketList = await retrieveTicketList;
+            //Passes ticket list to view
             ViewBag.ticketList = ticketList;
 
+            //Creates a list to store only the unique project name
             List<string> uniqueProjList = new List<string>();
 
             foreach (var ticket in ticketList)
@@ -35,18 +38,23 @@ namespace RequestSupportApp.Controllers
 
                     if (!uniqueProjList.Contains(ticket.ProjectName))
                     {
+                    //If project name is unique, add to list
                         uniqueProjList.Add(ticket.ProjectName);
                     }
             }
+            //Creates a list to store the # of tickets for each unique project
             List<int> projCountList = new List<int>();
             for(int i=0; i < uniqueProjList.Count; i++) { projCountList.Add(0); }
             foreach (var ticket in ticketList)
             {
+                //Adds 1 each time a ticket for a project appears in main ticketList
                 int pos = uniqueProjList.IndexOf(ticket.ProjectName);
                 projCountList[pos]++;
             }
+            //Assigns the total # of tickets to totalTickets variable
             var totalTickets = ticketList.Count;
 
+            //Passes both lists and total # of tickets to view for the graph construction
             ViewBag.uniqueProjList = uniqueProjList;
             ViewBag.projCountList = projCountList;
             ViewBag.totalTickets = totalTickets;

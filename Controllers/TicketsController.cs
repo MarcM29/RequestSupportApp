@@ -30,12 +30,16 @@ namespace RequestSupportApp.Controllers
         // GET: Tickets/ShowSearchForm
         public async Task<IActionResult> ShowSearchForm()
         {
+            //Retrieves list of employees
             var employeez = _context.Employee.ToListAsync();
             List<Employee> employees = await employeez;
+            //Passes list of employees to view
             ViewBag.employeeList = employees;
 
+            //Retrieves list of tickets
             var retrieveTicketList = _context.Ticket.ToListAsync();
             List<Ticket> ticketList = await retrieveTicketList;
+            //Passes list of tickets to view
             ViewBag.ticketList = ticketList;
 
             return View(await _context.Ticket.ToListAsync());
@@ -45,6 +49,7 @@ namespace RequestSupportApp.Controllers
         public async Task<IActionResult> ShowSearchResults(String ProjName, String DepName, String EmpName, String SearchPhrase, String DateTime)
         {
             //Checks if no filter was chosen for each field
+            //If no filter is chosen -> replace null value with empty string for SQL query
             if (ProjName is null)
             {
                 ProjName = "";
@@ -65,12 +70,14 @@ namespace RequestSupportApp.Controllers
             {
                 DateTime = "";
             }
+            //Passes filters chosen to view for user to easily see what filters were applied
             ViewBag.ProjName = ProjName;
             ViewBag.DepName = DepName;
             ViewBag.EmpName = EmpName;
             ViewBag.SearchPhrase = SearchPhrase;
             ViewBag.DateTime = DateTime;
 
+            //Returns the index view and a list of Tickets that match the SQL query determined by the chosen filters
             return View("Index", await _context.Ticket.Where(j => (j.ProjectName.Contains(ProjName) && j.DepartmentName.Contains(DepName) && j.EmployeeName.Contains(EmpName) && j.ProjectDesc.Contains(SearchPhrase) && j.TicketDate.Contains(DateTime))).ToListAsync());
         }
 
@@ -97,9 +104,11 @@ namespace RequestSupportApp.Controllers
         // GET: Tickets/DepSelect
         public async Task<IActionResult> DepSelect()
         {
-            var employeez = _context.Employee.ToListAsync();
-            List<Employee> employees = await employeez;
+            //Retrieves list of all employees (employee name & department)
+            var employeeList = _context.Employee.ToListAsync();
+            List<Employee> employees = await employeeList;
 
+            //Passes list to view in order to extract all department names
             ViewBag.employeeList = employees;
             return View();
         }
@@ -119,7 +128,7 @@ namespace RequestSupportApp.Controllers
             return View("Create");
         }
 
-        // GET: Tickets/Create
+        // GET: Tickets/Create ||| Default GET: CREATE that was replaced with GET: DepSelect
         /*public async Task<IActionResult> Create(String DepartmentName)
         {
             var employeez = _context.Employee.ToListAsync();
