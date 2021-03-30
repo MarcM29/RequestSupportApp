@@ -13,6 +13,10 @@ Bell coding assignment
 - [x] If no filter is chosen than display total list of created tickets
 
 # Chart Page
-- [ ] Provide clean display of charts displaying ticket info (number and content of charts are yet to be determined)
+- [x] Provide display of charts displaying ticket info (number and content of charts are yet to be determined)
+
+#Misc
+- [x] Comment code
+- [ ] Make web app bilingual
 
 
