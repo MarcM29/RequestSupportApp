@@ -1,4 +1,4 @@
-#Marc McCombe - Bell Coding Project
+# Marc McCombe - Bell Coding Project
 # Demo Video
 Incase there is any trouble cloning and launching this app on your machine here is a demo video of me displaying most of the app's functionality <br/>
 Demo video: https://youtu.be/fxTifxN_Ijg
