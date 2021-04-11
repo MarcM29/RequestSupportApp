@@ -1,6 +1,6 @@
 # Marc McCombe - Bell Coding Project
 # Demo Video
-Incase there is any trouble cloning and launching this app on your machine here is a demo video of me displaying most of the app's functionality <br/>
+Incase there is any trouble cloning and launching this app on your machine here is a demo video of me displaying most of the app's functionality <br/> <br/>
 Demo video: https://youtu.be/fxTifxN_Ijg
 <br/>
 # Requirements for MVP
