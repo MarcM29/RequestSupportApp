@@ -5,7 +5,7 @@ This project took me around 10-12 hours to complete <br/>
 Incase there is any trouble cloning and launching this app on your machine here is a demo video of me displaying most of the app's functionality <br/> <br/>
 Demo video: https://youtu.be/fxTifxN_Ijg
 <br/>
-# Requirements for MVP
+# Requirements
 
 # Submit Ticket Page
 - [x] Provide form for user to submit ticket details (project name, department name, *relevant* employee name and description) + automatically store date and time
