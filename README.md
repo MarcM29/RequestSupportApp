@@ -1,7 +1,7 @@
 # Marc McCombe - Bell Coding Project
 # Demo Video
-This is the completed coding project for the position at Bell Canada <br />
-This project took me around 10-12 hours to complete <br/>
+This is the completed coding project for the RPA position at Bell Canada <br />
+This project took me around 12 hours to complete <br/>
 Incase there is any trouble cloning and launching this app on your machine here is a demo video of me displaying most of the app's functionality <br/> <br/>
 Demo video: https://youtu.be/fxTifxN_Ijg
 <br/>
